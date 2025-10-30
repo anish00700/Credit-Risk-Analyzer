@@ -1,0 +1,21 @@
+{
+  "model_name": "catboost",
+  "model_type": "CatBoostClassifier",
+  "feature_importance": {
+    "term_length": 27.820377824178156,
+    "fico_score": 23.155648393098623,
+    "debt_to_income_ratio": 11.18703903647384,
+    "loan_to_income_ratio": 9.197010485049283,
+    "loan_amount": 6.921804696169688,
+    "revolving_utilization": 6.665611636214497,
+    "annual_income": 3.661135496093083,
+    "open_credit_lines": 3.592429905528264,
+    "monthly_income": 3.4914748539218152,
+    "employment_length": 2.6485668579252297,
+    "delinquencies_2yrs": 1.5517588093593855,
+    "high_utilization": 0.10714200598813033,
+    "age": 0.0,
+    "dependents": 0.0
+  },
+  "training_date": "2025-10-27T14:47:55.394925"
+}

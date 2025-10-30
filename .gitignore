@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- Python / Backend ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.python-version
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+.ipynb_checkpoints/
+.env
+.env.*
+
+# --- Project data & large artifacts ---
+# Avoid committing large datasets and binary model artifacts
+data/
+catboost_info/
+backend/artifacts/*.pkl
+backend/artifacts/*.joblib
+backend/artifacts/*.bin
+backend/artifacts/plots/
+
+# Misc
+*.sqlite3
+*.db
