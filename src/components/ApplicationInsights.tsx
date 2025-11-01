@@ -181,52 +181,51 @@ const ApplicationInsights: React.FC<ApplicationInsightsProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
-          <div className="flex items-center justify-between">
-            <DialogTitle className="text-2xl font-bold font-display">
-              Application Insights
-            </DialogTitle>
-          </div>
+      <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader className="pb-4 border-b border-border/50">
+          <DialogTitle className="text-3xl font-bold font-display tracking-tight">
+            Application Insights
+          </DialogTitle>
+          <p className="text-sm text-muted-foreground mt-2">Comprehensive credit risk analysis and recommendations</p>
         </DialogHeader>
 
-        <div className="space-y-6">
+        <div className="space-y-8 pt-4">
           {/* Applicant Header */}
-          <Card className="p-6 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h3 className="text-xl font-semibold font-display">{applicant.name}</h3>
+          <Card className="p-6 sm:p-8 bg-gradient-to-br from-primary/5 via-secondary/5 to-primary/5 border-2 border-primary/20 shadow-lg">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+              <div className="space-y-1">
+                <h3 className="text-2xl font-bold font-display tracking-tight">{applicant.name}</h3>
                 <p className="text-muted-foreground font-mono text-sm">{applicant.id}</p>
                 <p className="text-muted-foreground text-sm">{applicant.timestamp}</p>
               </div>
-              <div className="flex flex-col gap-2 items-end">
-                <Badge className={`${getRiskBadgeClass(livePrediction?.risk_label || applicant.riskTier)} font-semibold text-sm px-3 py-1`}>
+              <div className="flex flex-row sm:flex-col gap-2 items-start sm:items-end">
+                <Badge className={`${getRiskBadgeClass(livePrediction?.risk_label || applicant.riskTier)} font-bold text-sm px-4 py-1.5 shadow-md`}>
                   {(livePrediction?.risk_label || applicant.riskTier)} RISK
                 </Badge>
-                <Badge variant="outline" className={getStatusBadgeClass(applicant.status)}>
+                <Badge variant="outline" className={`${getStatusBadgeClass(applicant.status)} font-semibold`}>
                   {applicant.status}
                 </Badge>
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary font-display">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-border/30">
+              <div className="text-center space-y-1">
+                <div className="text-4xl font-bold text-primary font-display tracking-tight">
                   {formatPercentage(livePrediction?.default_probability ?? applicant.defaultProbability)}
                 </div>
-                <div className="text-sm text-muted-foreground">Default Probability</div>
+                <div className="text-sm font-medium text-muted-foreground">Default Probability</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-green-600 font-display">
+              <div className="text-center space-y-1">
+                <div className="text-3xl font-bold text-green-600 font-display tracking-tight">
                   {formatCurrency(applicant.insights.applicantData.loan_amount)}
                 </div>
-                <div className="text-sm text-muted-foreground">Loan Amount</div>
+                <div className="text-sm font-medium text-muted-foreground">Loan Amount</div>
               </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600 font-display">
+              <div className="text-center space-y-1">
+                <div className="text-3xl font-bold text-blue-600 font-display tracking-tight">
                   {applicant.insights.applicantData.fico_score}
                 </div>
-                <div className="text-sm text-muted-foreground">FICO Score</div>
+                <div className="text-sm font-medium text-muted-foreground">Credit Score (FICO/CIBIL)</div>
               </div>
             </div>
           </Card>
@@ -264,11 +263,11 @@ const ApplicationInsights: React.FC<ApplicationInsightsProps> = ({
           </Card>
 
           {/* Top Risk Factors */}
-          <Card className="p-6">
-            <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-primary" />
-              <span className="text-xl md:text-2xl font-extrabold tracking-tight font-display">Key Risk Factors</span>
-            </h4>
+          <Card className="p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-6 pb-3 border-b border-border/50">
+              <TrendingUp className="h-6 w-6 text-primary" />
+              <h4 className="text-2xl font-extrabold tracking-tight font-display">Key Risk Factors</h4>
+            </div>
             <div className="space-y-4">
               {(livePrediction ? livePrediction.top_factors.map(f => ({
                 feature: f.feature.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase()),
@@ -278,33 +277,33 @@ const ApplicationInsights: React.FC<ApplicationInsightsProps> = ({
               })) : applicant.insights.topFactors).map((factor, index) => (
                 <div
                   key={index}
-                  className={`p-4 rounded-lg border-l-4 ${
+                  className={`p-5 rounded-xl border-2 transition-all hover:shadow-md ${
                     factor.direction === "increases_risk"
-                      ? "border-red-500 bg-red-50/50"
-                      : "border-green-500 bg-green-50/50"
+                      ? "border-red-500/30 bg-red-500/5"
+                      : "border-green-500/30 bg-green-500/5"
                   }`}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <h5 className="font-semibold text-sm">{factor.feature}</h5>
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-start justify-between mb-3">
+                    <h5 className="font-bold text-base text-foreground capitalize">{factor.feature}</h5>
+                    <div className="flex items-center gap-2 flex-shrink-0">
                       <Badge
                         variant="outline"
-                        className={
+                        className={`font-semibold ${
                           factor.direction === "increases_risk"
-                            ? "text-red-600 border-red-500/30"
-                            : "text-green-600 border-green-500/30"
-                        }
+                            ? "text-red-600 border-red-500/40 bg-red-500/10"
+                            : "text-green-600 border-green-500/40 bg-green-500/10"
+                        }`}
                       >
                         {factor.direction === "increases_risk" ? (
-                          <TrendingUp className="h-3 w-3 mr-1" />
+                          <TrendingUp className="h-3.5 w-3.5 mr-1.5" />
                         ) : (
-                          <TrendingDown className="h-3 w-3 mr-1" />
+                          <TrendingDown className="h-3.5 w-3.5 mr-1.5" />
                         )}
                         {formatPercentage(factor.impact)}
                       </Badge>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {factor.description}
                   </p>
                 </div>
