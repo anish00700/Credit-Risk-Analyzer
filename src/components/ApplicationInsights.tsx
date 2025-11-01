@@ -267,7 +267,7 @@ const ApplicationInsights: React.FC<ApplicationInsightsProps> = ({
           <Card className="p-6">
             <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-primary" />
-              Key Risk Factors
+              <span className="text-xl md:text-2xl font-extrabold tracking-tight font-display">Key Risk Factors</span>
             </h4>
             <div className="space-y-4">
               {(livePrediction ? livePrediction.top_factors.map(f => ({

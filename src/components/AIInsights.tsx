@@ -212,7 +212,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-green-600 font-display">
-                  ₹{applicantData.loan_amount?.toLocaleString() || 'N/A'}
+                  ${applicantData.loan_amount?.toLocaleString() || 'N/A'}
                 </div>
                 <div className="text-sm text-muted-foreground">Loan Amount</div>
               </div>
@@ -271,7 +271,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Card className="p-4">
                     <div className="text-sm text-muted-foreground mb-1">Estimated Monthly EMI</div>
-                    <div className="text-base font-semibold">₹{Math.round(emi).toLocaleString()}</div>
+                    <div className="text-base font-semibold">${Math.round(emi).toLocaleString()}</div>
                   </Card>
                   <Card className="p-4">
                     <div className="text-sm text-muted-foreground mb-1">Payment / Income</div>
@@ -291,7 +291,7 @@ const AIInsights: React.FC<AIInsightsProps> = ({
           <Card className="p-6 animate-slide-up" style={{ animationDelay: "0.15s" }}>
             <h4 className="text-lg font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="h-5 w-5 text-primary" />
-              Live AI Risk Factor Analysis
+              <span className="text-2xl md:text-3xl font-extrabold tracking-tight font-display">Live AI Risk Factor Analysis</span>
               {livePrediction && (
                 <Badge variant="outline" className="ml-2 text-green-600 border-green-500/30">
                   <Brain className="h-3 w-3 mr-1" />
@@ -403,14 +403,14 @@ const AIInsights: React.FC<AIInsightsProps> = ({
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
               <div><span className="text-muted-foreground">Age:</span> <span className="font-medium">{applicantData.age}</span></div>
-              <div><span className="text-muted-foreground">Annual Income:</span> <span className="font-medium">₹{applicantData.annual_income.toLocaleString()}</span></div>
+              <div><span className="text-muted-foreground">Annual Income:</span> <span className="font-medium">${applicantData.annual_income.toLocaleString()}</span></div>
               <div><span className="text-muted-foreground">DTI:</span> <span className="font-medium">{(applicantData.debt_to_income_ratio * 100).toFixed(1)}%</span></div>
               <div><span className="text-muted-foreground">Utilization:</span> <span className="font-medium">{(applicantData.revolving_utilization * 100).toFixed(1)}%</span></div>
               <div><span className="text-muted-foreground">Open Lines:</span> <span className="font-medium">{applicantData.open_credit_lines}</span></div>
               <div><span className="text-muted-foreground">Delinquencies (2y):</span> <span className="font-medium">{applicantData.delinquencies_2yrs}</span></div>
               <div><span className="text-muted-foreground">Dependents:</span> <span className="font-medium">{applicantData.dependents}</span></div>
               <div><span className="text-muted-foreground">FICO Score:</span> <span className="font-medium">{applicantData.fico_score}</span></div>
-              <div><span className="text-muted-foreground">Loan Amount:</span> <span className="font-medium">₹{(applicantData.loan_amount || 0).toLocaleString()}</span></div>
+              <div><span className="text-muted-foreground">Loan Amount:</span> <span className="font-medium">${(applicantData.loan_amount || 0).toLocaleString()}</span></div>
               <div><span className="text-muted-foreground">Employment Length:</span> <span className="font-medium">{applicantData.employment_length} years</span></div>
             </div>
           </Card>

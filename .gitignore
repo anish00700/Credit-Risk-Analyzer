@@ -39,7 +39,13 @@ venv/
 .env.*
 
 # --- Project data & large artifacts ---
-# If you prefer to exclude large data/models, re-add ignore rules here.
+# Avoid committing large datasets and binary model artifacts
+data/
+catboost_info/
+backend/artifacts/*.pkl
+backend/artifacts/*.joblib
+backend/artifacts/*.bin
+backend/artifacts/plots/
 
 # Misc
 *.sqlite3

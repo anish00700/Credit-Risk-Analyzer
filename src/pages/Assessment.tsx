@@ -249,7 +249,7 @@ const Assessment = () => {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="annual_income">Annual Income (₹)</Label>
+                  <Label htmlFor="annual_income">Annual Income ($)</Label>
                   <Input
                     id="annual_income"
                     type="number"
@@ -320,7 +320,7 @@ const Assessment = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="delinquencies_2yrs">Delinquencies in Past 2 Years</Label>
+                  <Label htmlFor="delinquencies_2yrs">Delinquencies in Past 2 Years (DPD)</Label>
                   <Input
                     id="delinquencies_2yrs"
                     type="number"
@@ -330,11 +330,11 @@ const Assessment = () => {
                     className="transition-all focus:ring-2 focus:ring-primary/50"
                     required
                   />
-                  <p className="text-xs text-muted-foreground">Number of times payment was 90+ days overdue</p>
+                  <p className="text-xs text-muted-foreground">Number of times payment was 90+ days overdue (DPD 90+)</p>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="fico_score">FICO Credit Score</Label>
+                  <Label htmlFor="fico_score">FICO Credit Score (CIBIL)</Label>
                   <Input
                     id="fico_score"
                     type="number"
@@ -345,7 +345,7 @@ const Assessment = () => {
                     className="transition-all focus:ring-2 focus:ring-primary/50"
                     required
                   />
-                  <p className="text-xs text-muted-foreground">Credit score (300-850)</p>
+                  <p className="text-xs text-muted-foreground">Credit score (FICO 300–850, CIBIL 300–900)</p>
                 </div>
               </div>
             </div>
@@ -358,7 +358,7 @@ const Assessment = () => {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="loan_amount">Loan Amount (₹)</Label>
+                  <Label htmlFor="loan_amount">Loan Amount ($)</Label>
                   <Input
                     id="loan_amount"
                     type="number"
@@ -460,7 +460,9 @@ const Assessment = () => {
               {/* Top Risk Factors */}
               {result.top_factors && result.top_factors.length > 0 && (
                 <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-center font-display">Key Risk Factors</h4>
+                  <h4 className="text-xl md:text-2xl font-extrabold text-center font-display tracking-tight">
+                    Key Risk Factors
+                  </h4>
                   <div className="space-y-3">
                     {result.top_factors.slice(0, 3).map((factor, index) => (
                       <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-muted/20">

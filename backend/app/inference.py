@@ -57,7 +57,7 @@ class SHAPExplainer:
             'open_credit_lines': 'Number of open credit lines',
             'delinquencies_2yrs': 'Delinquencies in past 2 years',
             'dependents': 'Number of dependents',
-            'fico_score': 'FICO credit score',
+            'fico_score': 'FICO credit score (CIBIL)',
             'loan_amount': 'Requested loan amount',
             'employment_length': 'Employment length in years',
             'term_length': 'Loan term length',

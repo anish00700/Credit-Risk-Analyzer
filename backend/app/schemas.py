@@ -10,13 +10,13 @@ class ApplicantRequest(BaseModel):
     """Request schema for credit risk prediction."""
     
     age: int = Field(..., ge=18, le=100, description="Applicant age in years")
-    annual_income: float = Field(..., gt=0, description="Annual income in USD")
+    annual_income: float = Field(..., gt=0, description="Annual income in USD (INR equivalent acceptable)")
     debt_to_income_ratio: float = Field(..., ge=0, le=1, description="Debt-to-income ratio (0-1)")
     revolving_utilization: float = Field(..., ge=0, le=1, description="Revolving credit utilization (0-1)")
     open_credit_lines: int = Field(..., ge=0, description="Number of open credit lines")
     delinquencies_2yrs: int = Field(..., ge=0, description="Number of delinquencies in past 2 years")
     dependents: int = Field(..., ge=0, le=10, description="Number of dependents")
-    fico_score: int = Field(..., ge=300, le=850, description="FICO credit score")
+    fico_score: int = Field(..., ge=300, le=850, description="FICO credit score (CIBIL reference: 300-900)")
     loan_amount: Optional[float] = Field(None, gt=0, description="Requested loan amount")
     employment_length: Optional[int] = Field(None, ge=0, le=50, description="Employment length in years")
     
